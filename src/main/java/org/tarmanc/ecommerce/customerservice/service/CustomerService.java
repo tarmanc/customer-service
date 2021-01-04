@@ -17,7 +17,6 @@ import java.util.List;
 public class CustomerService {
 
     private final JmsTemplate jmsTemplate;
-    private final JmsTemplate jmsFullItem;
 
     @SuppressWarnings("unchecked")
     public List<ItemBase> getAllItems() {
@@ -53,7 +52,7 @@ public class CustomerService {
 
     @SuppressWarnings("unchecked")
     public List<ItemBase> searchItems(String name) {
-        Message message = jmsTemplate.sendAndReceive(JMSConfig.ALL_QUEUE, session -> session.createTextMessage(name));
+        Message message = jmsTemplate.sendAndReceive(JMSConfig.SEARCH_QUEUE, session -> session.createTextMessage(name));
 
         if (message != null) {
             try {
@@ -61,7 +60,6 @@ public class CustomerService {
                 return message.getBody(List.class);
             } catch (JMSException e) {
                 e.printStackTrace();
-
             }
         }
         return null;

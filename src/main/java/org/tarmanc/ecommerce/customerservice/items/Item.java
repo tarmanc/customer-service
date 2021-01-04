@@ -1,16 +1,23 @@
 package org.tarmanc.ecommerce.customerservice.items;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
-
-public class Item extends ItemBase{
+@Getter
+@Setter
+public class Item extends ItemBase {
 
     private String description;
     private long quantity;
 
-    public Item(UUID id, long itemID) {
-        super(id, itemID);
+    @Builder(builderMethodName = "itemBaseBuilder")
+    public Item(UUID id, long itemID, BigDecimal price, String itemName, String description, long quantity) {
+        super(id, itemID, itemName, price);
+        this.description = description;
+        this.quantity = quantity;
     }
 }

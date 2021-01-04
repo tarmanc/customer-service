@@ -1,19 +1,23 @@
 package org.tarmanc.ecommerce.customerservice.items;
 
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
 @Builder
-@RequiredArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class ItemBase {
 
     private final UUID id;
     private final long itemID;
     private String itemName;
-    private BigInteger itemPrice;
+    private BigDecimal itemPrice;
+
 }
