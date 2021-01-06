@@ -1,4 +1,4 @@
-package org.tarmanc.ecommerce.customerservice.unitTest;
+package org.tarmanc.ecommerce.customerservice.unittest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +9,9 @@ import java.math.BigDecimal;
 import java.util.Random;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.jgroups.util.Util.assertEquals;
+import static org.jgroups.util.Util.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
 public class ItemTest {
@@ -28,15 +30,14 @@ public class ItemTest {
         assertEquals(itemBase.getItemPrice().toString(), "12.99");
         assertNotNull(itemBase);
 
-        Item item = Item.itemBaseBuilder()
+        Item item = Item.itemDetailedBuilder()
                 .itemID(new Random().nextLong())
                 .id(UUID.randomUUID())
                 .description("description")
                 .quantity(20L)
                 .itemName("testItem")
-                .price(new BigDecimal("6.50"))
+                .itemPrice(new BigDecimal("6.50"))
                 .build();
-
 
         assertEquals(item.getItemPrice().toString(), "6.50");
         assertNotNull(item.getDescription());
