@@ -9,6 +9,7 @@ import org.tarmanc.ecommerce.customerservice.items.Item;
 import org.tarmanc.ecommerce.customerservice.items.ItemBase;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1")
@@ -23,7 +24,7 @@ public class ItemController {
     }
 
     @GetMapping("/item/{id}")
-    public ResponseEntity<Item> getItemById(@PathVariable() long id){
+    public ResponseEntity<Item> getItemById(@PathVariable() UUID id){
         return new ResponseEntity<>(customerService.getItemById(id), HttpStatus.ACCEPTED);
     }
 

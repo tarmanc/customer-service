@@ -39,19 +39,16 @@ class EndPointTest {
     public void setup() {
         wireMockServer.start();
         this.itemBase = ItemBase.builder()
-                .itemID(new Random().nextLong())
                 .itemName("test1")
                 .itemPrice(new BigDecimal("12.99"))
                 .id(uuid)
                 .build();
         this.itemBase2 = ItemBase.builder()
-                .itemID(new Random().nextLong())
                 .itemName("search")
                 .itemPrice(new BigDecimal("12.99"))
                 .id(UUID.randomUUID())
                 .build();
         this.item = Item.itemDetailedBuilder()
-                .itemID(new Random().nextLong())
                 .id(uuid)
                 .description("description")
                 .quantity(20L)

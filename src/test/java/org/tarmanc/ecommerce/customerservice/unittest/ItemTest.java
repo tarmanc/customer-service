@@ -6,7 +6,6 @@ import org.tarmanc.ecommerce.customerservice.items.Item;
 import org.tarmanc.ecommerce.customerservice.items.ItemBase;
 
 import java.math.BigDecimal;
-import java.util.Random;
 import java.util.UUID;
 
 import static org.jgroups.util.Util.assertEquals;
@@ -20,7 +19,6 @@ public class ItemTest {
     @Test
     public void itemBuilder() {
         ItemBase itemBase = ItemBase.builder()
-                .itemID(new Random().nextLong())
                 .itemName("test")
                 .itemPrice(new BigDecimal("12.99"))
                 .id(UUID.randomUUID())
@@ -31,7 +29,6 @@ public class ItemTest {
         assertNotNull(itemBase);
 
         Item item = Item.itemDetailedBuilder()
-                .itemID(new Random().nextLong())
                 .id(UUID.randomUUID())
                 .description("description")
                 .quantity(20L)

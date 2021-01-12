@@ -3,6 +3,7 @@ package org.tarmanc.ecommerce.customerservice.items;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -10,10 +11,9 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemBase {
+public class ItemBase implements Serializable {
 
     private UUID id;
-    private long itemID;
     private String itemName;
     private BigDecimal itemPrice;
 
