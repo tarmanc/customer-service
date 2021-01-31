@@ -1,0 +1,37 @@
+
+services:
+
+  customer-service:
+    image: thrallx/customer-service:0.0.1-SNAPSHOT
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql
+      - order-processor
+    networks:
+      - application-network
+
+
+
+  order-processor:
+    image: thrallx/order-processor-service:0.0.1-SNAPSHOT
+    build:
+    ports:
+      - "8080:8080"
+    networks:
+      - application-network
+
+  mysql:
+    image: mysql:latest:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=itemdb
+      - MYSQL_USER=comuser
+      - MYSQL_PASSWORD=ecompass
+    restart: always
+    networks:
+      - application-network
+  
+networks:
+  application-network:

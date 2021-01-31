@@ -19,17 +19,17 @@ public class ItemController {
     private final CustomerService customerService;
 
     @GetMapping("/items")
-    public ResponseEntity<List<ItemBase>> getAllAvailableItems(){
+    public ResponseEntity<List<ItemBase>> getAllAvailableItems() {
         return new ResponseEntity<>(customerService.getAllItems(), HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/item/{id}")
-    public ResponseEntity<Item> getItemById(@PathVariable() UUID id){
+    public ResponseEntity<Item> getItemById(@PathVariable() UUID id) {
         return new ResponseEntity<>(customerService.getItemById(id), HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<ItemBase>> searchItems(@RequestParam String name){
+    public ResponseEntity<List<ItemBase>> searchItems(@RequestParam String name) {
         return new ResponseEntity<>(customerService.searchItems(name), HttpStatus.ACCEPTED);
     }
 
